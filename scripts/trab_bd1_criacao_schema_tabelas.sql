@@ -1,6 +1,7 @@
 -- Criação do esquema do trabalho --
 
 create schema bd1_escola;
+use bd1_escola;
 
 -- Criação das tabelas e relacionamentos --
 
@@ -12,7 +13,7 @@ create table cidade (
 );
 
 
-create table pessoa (
+create table pessoa(
     codPessoa integer not null auto_increment,
     nome varchar(50) not null,
     telefone varchar(20),
