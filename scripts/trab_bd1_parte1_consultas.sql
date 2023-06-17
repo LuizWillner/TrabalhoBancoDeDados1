@@ -6,7 +6,13 @@
 
 
 -- Q2: Listar o nome e matrícula dos alunos sem nenhum contato cadastrado.
-
+select pessoa.nome, aluno.matricula
+from pessoa
+join aluno on pessoa.codPessoa = aluno.codPessoa 
+where aluno.codPessoa not in (
+	select distinct contato.codAluno 
+	from contato
+);
 
 -- Q3: Listar o código e nome das turmas com mais de 5 alunos.
 
