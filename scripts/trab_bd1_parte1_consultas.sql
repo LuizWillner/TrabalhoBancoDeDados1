@@ -1,5 +1,4 @@
 -- Trabalho Banco de Dados 1 - Consultas --
-use bd1_escola;
 
 
 -- Q1: Listar o nome e a cidade das escolas onde todos os alunos
@@ -91,6 +90,11 @@ join disciplina on profs_por_disciplina.codDisciplina = disciplina.codDisciplina
 
 -- Q6: Listar o nome da escola e o nome dos diretores de escola que residem
 --     em cidades diferentes da cidade da escola.
+
+select escola.nome as nome_escola, pessoa.nome as nome_prof_diretor
+from escola
+join pessoa on escola.codProfDiretor = pessoa.codPessoa 
+where escola.codCidade != pessoa.codCidade 
 
 
 -- Q7: Listar por escola o número de turmas e o número de professores que
