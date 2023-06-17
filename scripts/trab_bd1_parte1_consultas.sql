@@ -66,6 +66,27 @@ where turma_por_prof.quant_turmas >= 3;
 -- Q5: Listar por disciplina o número de professores que podem ministrá-la
 --     e quantos efetivamente ministram a mesma para uma turma.
 
+with ministrar_em_atividade as (
+	select distinct codProf, codDisciplina
+	from ministrar_turma
+)
+
+select disciplina.nome, profs_por_disciplina.total_profs, profs_em_atividade_por_disciplina.total_profs_em_atividade
+
+from (
+	select ministrar.codDisciplina, count(ministrar.codProf) as total_profs
+	from ministrar
+	group by ministrar.codDisciplina
+) as profs_por_disciplina
+
+join (
+	select ministrar_em_atividade.codDisciplina, count(ministrar_em_atividade.codProf) as total_profs_em_atividade
+	from ministrar_em_atividade
+	group by ministrar_em_atividade.codDisciplina
+) as profs_em_atividade_por_disciplina on profs_por_disciplina.codDisciplina = profs_em_atividade_por_disciplina.codDisciplina
+
+join disciplina on profs_por_disciplina.codDisciplina = disciplina.codDisciplina;
+
 
 -- Q6: Listar o nome da escola e o nome dos diretores de escola que residem
 --     em cidades diferentes da cidade da escola.
@@ -84,3 +105,4 @@ where turma_por_prof.quant_turmas >= 3;
 
 
 -- Q10: Listar todos os professores que ministram disciplinas para apenas uma turma
+
