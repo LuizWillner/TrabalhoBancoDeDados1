@@ -1,3 +1,5 @@
+use bd1_escola;
+
 -- Populando tabela 'cidade' --
 insert into cidade
 	(codCidade, nome)

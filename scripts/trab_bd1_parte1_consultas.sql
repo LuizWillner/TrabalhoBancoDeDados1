@@ -1,4 +1,5 @@
 -- Trabalho Banco de Dados 1 - Consultas --
+use bd1_escola;
 
 
 -- Q1: Listar o nome e a cidade das escolas onde todos os alunos
