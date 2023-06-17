@@ -4,6 +4,27 @@
 -- Q1: Listar o nome e a cidade das escolas onde todos os alunos
 --     residam na mesma cidade onde a escola está localizada.
 
+select  alunos_total_por_escola.nome_escola, alunos_total_por_escola.nome_cidade_da_escola
+from (
+	select escola.codEscola, escola.nome as nome_escola, cidade.nome as nome_cidade_da_escola, count(pessoa.codPessoa) as total_pessoas
+	from pessoa
+	join aluno on pessoa.codPessoa = aluno.codPessoa 
+	join turma on aluno.codTurma = turma.codTurma 
+	join escola on turma.codEscola = escola.codEscola
+	join cidade on escola.codCidade = cidade.codCidade 
+ 	group by escola.codEscola
+) as alunos_total_por_escola
+join (
+	select escola.codEscola, count(pessoa.codPessoa) as total_pessoas_mesma_cidade
+	from pessoa
+	join aluno on pessoa.codPessoa = aluno.codPessoa 
+	join turma on aluno.codTurma = turma.codTurma 
+	join escola on turma.codEscola = escola.codEscola 
+	where pessoa.codCidade = escola.codCidade 
+	group by escola.codEscola
+) as alunos_cidade_por_escola on alunos_total_por_escola.codEscola = alunos_cidade_por_escola.codEscola
+where alunos_total_por_escola.total_pessoas = alunos_cidade_por_escola.total_pessoas_mesma_cidade;
+
 
 -- Q2: Listar o nome e matrícula dos alunos sem nenhum contato cadastrado.
 
