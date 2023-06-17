@@ -1,57 +1,53 @@
 -- Populando tabela 'cidade' --
 insert into cidade
-	(nome)
+	(codCidade, nome)
 values
-	('Rio de Janeiro'), ('Niterói'), ('São Paulo'), ('Salvador'), ('Curitiba');
+	(4, 'Rio de Janeiro'), (5, 'Niterói'), (6, 'São Paulo'), (7, 'Salvador'), (8, 'Curitiba');
     
     
 -- Populando tabela 'pessoa' --
 insert into pessoa
-	(nome, telefone, codCidade)
+	(codPessoa, nome, telefone, codCidade)
 values
-	('Lucas Vitor Caldeira Borba', '(51)926742422', 4),
-	('Gabriel Robert Rosário', '(87)955791733', 5),
-	('Eduardo Feliciano Rocha', '(48)961248718', 6),
-	('Carlos Abreu', '(57)965741425', 7),
-	('David Aragão Fidalgo', '(62)915196471', 8),
-	('Lilian Feliciano Matos', '(25)961386984', 4),
-	('Simão Helder Quintana Reis', '(73)923387419', 5),
-	('Dilma Abreu de França', '(34)928337248', 6),
-	('Simon Kevin Lozano Romero', '(61)962316452', 7),
-	('Manuel Leon de Oliveira', '(17)939672359', 8),
-	('Gabriela Amélia Carmona de Castro', null, 4),
-	('Jairo Fonseca de Almeida', '(92)944815686', 5),
-	('Ezequiel Fernandes Filho', '(42)991268711', 6),
-	('Reginaldo Roberto Domingues de Ferraz', null, 7),
-	('Luna Bittencourt de Alvim', '(56)949626589', 8),
-	('Carlos Bittencourt de Flores', null, 4),
-	('Edu Eric Galvão de Madeira', '(49)931669262', 5),
-	('Ricardo Bóris de Queirós Sobrinho', null, 6),
-	('Anna Manuela de Colaço', '(97)954864275', 7),
-	('Anna Sheila Chaves da Paixão', null, 8),
-	('Emílio Lucas Leon Marin', '(99)948665143', 4),
-	('Ana Ediane Romero de Gimenes', '(94)918857442', 5),
-	('Fernanda Corona Galhardo', null, 6),
-	('André Hércules Aragão Coutinho', null, 7),
-	('Arthur Baltazar Fontes Quintana', '(73)916369346', 8);
-
-insert into pessoa
-	(nome, telefone, codCidade)
-values
-	('Eduardo Flávio de Ferreira Sobrinho', '(39)957193526', 4),
-	('Cauê Fontes', '(88)916334147', 5),
-	('Alessandra Alessandra Gil de Bueno', '(11)955347824', 6),
-	('Luiza Márcia Correia', '(84)917936422', 7),
-	('Malena Shirley Caldeira Soto de Almeida', '(48)921727279', 8),
-	('Horácio Everton Cervantes', '(65)971139316', 4),
-	('Jaqueline Jenny Leal',	'(95)978542275', 5),
-	('Anna Ângela Burgos Feliciano',	'(25)925572921', 6),
-	('Everaldo Benites de Perez', '(19)997764556', 7),
-	('Celso Geraldo Delatorre Valdez de Cerqueira', '(88)972538782', 8),
-	('Sérgio Altair Ávila Ferminiano', '(71)968176535', 4),
-	('Hélio Sílvio Barreto Jr.',	'(43)956128329', 5),
-	('Batista Burgos Sobrinho', '(77)969226571', 6),
-	('Eduardo Gonçalves Vega', '(25)951832959', 7);
+	(10, 'Lucas Vitor Caldeira Borba', '(51)926742422', 4),
+	(11, 'Gabriel Robert Rosário', '(87)955791733', 5),
+	(12, 'Eduardo Feliciano Rocha', '(48)961248718', 6),
+	(13, 'Carlos Abreu', '(57)965741425', 7),
+	(14, 'David Aragão Fidalgo', '(62)915196471', 8),
+	(15, 'Lilian Feliciano Matos', '(25)961386984', 4),
+	(16, 'Simão Helder Quintana Reis', '(73)923387419', 5),
+	(17, 'Dilma Abreu de França', '(34)928337248', 6),
+	(18, 'Simon Kevin Lozano Romero', '(61)962316452', 7),
+	(19, 'Manuel Leon de Oliveira', '(17)939672359', 8),
+	(20, 'Gabriela Amélia Carmona de Castro', null, 4),
+	(21, 'Jairo Fonseca de Almeida', '(92)944815686', 5),
+	(22, 'Ezequiel Fernandes Filho', '(42)991268711', 6),
+	(23, 'Reginaldo Roberto Domingues de Ferraz', null, 7),
+	(24, 'Luna Bittencourt de Alvim', '(56)949626589', 8),
+	(25, 'Carlos Bittencourt de Flores', null, 4),
+	(26, 'Edu Eric Galvão de Madeira', '(49)931669262', 5),
+	(27, 'Ricardo Bóris de Queirós Sobrinho', null, 6),
+	(28, 'Anna Manuela de Colaço', '(97)954864275', 7),
+	(29, 'Anna Sheila Chaves da Paixão', null, 8),
+	(30, 'Emílio Lucas Leon Marin', '(99)948665143', 4),
+	(31, 'Ana Ediane Romero de Gimenes', '(94)918857442', 5),
+	(32, 'Fernanda Corona Galhardo', null, 6),
+	(33, 'André Hércules Aragão Coutinho', null, 7),
+	(34, 'Arthur Baltazar Fontes Quintana', '(73)916369346', 8),
+	(35, 'Eduardo Flávio de Ferreira Sobrinho', '(39)957193526', 4),
+	(36, 'Cauê Fontes', '(88)916334147', 5),
+	(37, 'Alessandra Alessandra Gil de Bueno', '(11)955347824', 6),
+	(38, 'Luiza Márcia Correia', '(84)917936422', 7),
+	(39, 'Malena Shirley Caldeira Soto de Almeida', '(48)921727279', 8),
+	(40, 'Horácio Everton Cervantes', '(65)971139316', 4),
+	(41, 'Jaqueline Jenny Leal',	'(95)978542275', 5),
+	(42, 'Anna Ângela Burgos Feliciano',	'(25)925572921', 6),
+	(43, 'Everaldo Benites de Perez', '(19)997764556', 7),
+	(44, 'Celso Geraldo Delatorre Valdez de Cerqueira', '(88)972538782', 8),
+	(45, 'Sérgio Altair Ávila Ferminiano', '(71)968176535', 4),
+	(46, 'Hélio Sílvio Barreto Jr.',	'(43)956128329', 5),
+	(47, 'Batista Burgos Sobrinho', '(77)969226571', 6),
+	(48, 'Eduardo Gonçalves Vega', '(25)951832959', 7);
 
 
 -- Popular tabela 'professor' --
@@ -70,26 +66,26 @@ values
 
 -- Popular tabela 'escola' --
 insert into escola
-	(nome, codCidade, codProfDiretor)
+	(codEscola, nome, codCidade, codProfDiretor)
 values
-	('Colégio São Vicente de Paulo',	4,	10),
-	('Abel',	4,	11),
-	('Salesiano',	5,	16),
-	('Colégio PH',	6,	14);
+	(3, 'Colégio São Vicente de Paulo',	4,	10),
+	(4, 'Abel',	4,	11),
+	(5, 'Salesiano',	5,	16),
+	(6, 'Colégio PH',	6,	14);
     
 
 -- Popular tabela 'turma' --
 insert into turma
-	(nome, codEscola)
+	(codTurma, nome, codEscola)
 values
-	('A1',	3),
-	('A2',	3),
-	('B1',	4),
-	('B2',	4),
-	('C1',	5),
-	('C2',	5),
-	('D1',	6),
-	('D2',	6);
+	(2, 'A1',	3),
+	(3, 'A2',	3),
+	(4, 'B1',	4),
+	(5, 'B2',	4),
+	(6, 'C1',	5),
+	(7, 'C2',	5),
+	(8, 'D1',	6),
+	(9, 'D2',	6);
 
 
 -- Popular tabela 'aluno' --
@@ -132,15 +128,15 @@ values
 
 -- Popular tabela 'disciplina' --
 insert into disciplina
-	(nome)
+	(codDisciplina, nome)
 values
-	('Matemática'),
-	('Física'),
-	('Química'),
-	('Biologia'),
-	('História'),
-	('Geografia'),
-	('Português');
+	(18, 'Matemática'),
+	(19, 'Física'),
+	(20, 'Química'),
+	(21, 'Biologia'),
+	(22, 'História'),
+	(23, 'Geografia'),
+	(24, 'Português');
     
 
 -- Popular tabela 'contato'

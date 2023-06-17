@@ -6,7 +6,7 @@ use bd1_escola;
 -- Criação das tabelas e relacionamentos --
 
 create table cidade (
-    codCidade integer not null auto_increment,
+    codCidade integer not null,
     nome varchar(50) not null,
     
     constraint pk_cidade primary key (codCidade)
@@ -14,7 +14,7 @@ create table cidade (
 
 
 create table pessoa(
-    codPessoa integer not null auto_increment,
+    codPessoa integer not null,
     nome varchar(50) not null,
     telefone varchar(20),
     codCidade integer not null,
@@ -40,7 +40,7 @@ create table professor (
 
 
 create table escola (
-    codEscola integer not null auto_increment,
+    codEscola integer not null,
     nome varchar(50) not null,
     codCidade integer not null,
     codProfDiretor integer not null,
@@ -55,7 +55,7 @@ create table escola (
 
 
 create table turma (
-    codTurma integer not null auto_increment,
+    codTurma integer not null,
     nome varchar(50) not null,
     codEscola integer not null,
     
@@ -81,7 +81,7 @@ create table aluno (
 
 
 create table disciplina (
-    codDisciplina integer not null auto_increment,
+    codDisciplina integer not null,
     nome varchar(50) not null,
     
     constraint pk_disciplina primary key (codDisciplina),
