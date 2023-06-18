@@ -118,10 +118,46 @@ join (
 -- Q8: Listar por escola a razão entre o número de alunos da escola e o
 --     número de professores que ministram alguma disciplina na escola em questão.
 
+select alunos_por_escola.nome_escola, total_alunos/total_profs as razao_alunos_profs
+from (
+	select escola.nome as nome_escola, count(aluno.codPessoa) as total_alunos
+	from aluno
+	join turma on aluno.codTurma = turma.codTurma 
+	join escola on turma.codEscola = escola.codEscola 
+	group by escola.nome
+) as alunos_por_escola
+join (
+	select professor_escola.nome_escola, count(professor_escola.codProf) as total_profs
+	from (
+		select distinct ministrar_turma.codProf, escola.nome as nome_escola
+		from ministrar_turma
+		join turma on ministrar_turma.codTurma = turma.codTurma 
+		join escola on turma.codEscola = escola.codEscola 
+	) as professor_escola
+	group by professor_escola.nome_escola
+) as professores_por_escola on alunos_por_escola.nome_escola = professores_por_escola.nome_escola
+
 
 -- Q9: Listar todos os contatos dos alunos informando a matrícula e nome do aluno,
 --     nome e telefone do contato, ordenado por matrícula do aluno e nome do contato.
 
+select aluno.matricula, pessoa.nome as nome_aluno, contato.nome as nome_contato, contato.telefone as telefone_contato
+from pessoa
+join aluno on pessoa.codPessoa = aluno.codPessoa
+join contato on aluno.codPessoa = contato.codAluno
+order by aluno.matricula, contato.nome
+
 
 -- Q10: Listar todos os professores que ministram disciplinas para apenas uma turma
 
+select pessoa.nome as nome_prof
+from pessoa
+join (
+	select professor_turma.codProf, count(professor_turma.codTurma) as total_turmas
+	from (
+		select distinct ministrar_turma.codProf, ministrar_turma.codTurma
+		from ministrar_turma
+	) as professor_turma
+	group by professor_turma.codProf
+) as turmas_por_prof on pessoa.codPessoa = turmas_por_prof.codProf
+where turmas_por_prof.total_turmas = 1
