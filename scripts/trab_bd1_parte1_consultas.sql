@@ -70,21 +70,17 @@ with ministrar_em_atividade as (
 	select distinct codProf, codDisciplina
 	from ministrar_turma
 )
-
 select disciplina.nome, profs_por_disciplina.total_profs, profs_em_atividade_por_disciplina.total_profs_em_atividade
-
 from (
 	select ministrar.codDisciplina, count(ministrar.codProf) as total_profs
 	from ministrar
 	group by ministrar.codDisciplina
 ) as profs_por_disciplina
-
 join (
 	select ministrar_em_atividade.codDisciplina, count(ministrar_em_atividade.codProf) as total_profs_em_atividade
 	from ministrar_em_atividade
 	group by ministrar_em_atividade.codDisciplina
 ) as profs_em_atividade_por_disciplina on profs_por_disciplina.codDisciplina = profs_em_atividade_por_disciplina.codDisciplina
-
 join disciplina on profs_por_disciplina.codDisciplina = disciplina.codDisciplina;
 
 
@@ -99,6 +95,24 @@ where escola.codCidade != pessoa.codCidade
 
 -- Q7: Listar por escola o número de turmas e o número de professores que
 --     ministram alguma disciplina para turmas da escola em questão.
+
+select turmas_por_escola.nome_escola, turmas_por_escola.total_turmas, professores_por_escola.total_profs
+from (
+	select escola.nome as nome_escola, count(codTurma) as total_turmas
+	from escola
+	join turma on escola.codEscola = turma.codEscola  
+	group by escola.nome
+) as turmas_por_escola
+join (
+	select professor_escola.nome_escola, count(professor_escola.codProf) as total_profs
+	from (
+		select distinct ministrar_turma.codProf, escola.nome as nome_escola
+		from ministrar_turma
+		join turma on ministrar_turma.codTurma = turma.codTurma 
+		join escola on turma.codEscola = escola.codEscola 
+	) as professor_escola
+	group by professor_escola.nome_escola
+) as professores_por_escola on turmas_por_escola.nome_escola = professores_por_escola.nome_escola
 
 
 -- Q8: Listar por escola a razão entre o número de alunos da escola e o
