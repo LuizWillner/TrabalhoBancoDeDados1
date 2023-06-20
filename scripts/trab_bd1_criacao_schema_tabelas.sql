@@ -36,6 +36,8 @@ create table professor (
     constraint uk_cpf unique key (cpf),
     constraint fk_professor_relation_pessoa foreign key (codPessoa)
         references Pessoa (codPessoa)
+        on delete cascade
+        on update cascade
 );
 
 
