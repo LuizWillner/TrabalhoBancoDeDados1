@@ -51,6 +51,7 @@ where alunos_por_turma.quant_alunos > 5;
 
 -- Q4: Listar o código, nome e titulação dos professores que ministram
 --     aulas para pelo menos três turmas diferentes.
+-- TODO: Usar HAVING?
 
 select turma_por_prof.codProf, pessoa.nome, professor.titulacao 
 from (
@@ -65,6 +66,7 @@ where turma_por_prof.quant_turmas >= 3;
 
 -- Q5: Listar por disciplina o número de professores que podem ministrá-la
 --     e quantos efetivamente ministram a mesma para uma turma.
+-- TODO: Usar abordagem de sala com count(DISTINCT)?
 
 with ministrar_em_atividade as (
 	select distinct codProf, codDisciplina
@@ -95,6 +97,7 @@ where escola.codCidade != pessoa.codCidade
 
 -- Q7: Listar por escola o número de turmas e o número de professores que
 --     ministram alguma disciplina para turmas da escola em questão.
+-- TODO: Usar abordagem de sala com count(DISTINCT)?
 
 select turmas_por_escola.nome_escola, turmas_por_escola.total_turmas, professores_por_escola.total_profs
 from (
@@ -117,6 +120,7 @@ join (
 
 -- Q8: Listar por escola a razão entre o número de alunos da escola e o
 --     número de professores que ministram alguma disciplina na escola em questão.
+-- TODO: Usar abordagem de sala com count(DISTINCT)?
 
 select alunos_por_escola.nome_escola, total_alunos/total_profs as razao_alunos_profs
 from (
@@ -149,6 +153,7 @@ order by aluno.matricula, contato.nome
 
 
 -- Q10: Listar todos os professores que ministram disciplinas para apenas uma turma
+-- TODO: Usar HAVING?
 
 select pessoa.nome as nome_prof
 from pessoa
