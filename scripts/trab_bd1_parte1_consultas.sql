@@ -3,7 +3,6 @@
 
 -- Q1: Listar o nome e a cidade das escolas onde todos os alunos
 --     residam na mesma cidade onde a escola está localizada.
--- TODO: Melhorar resposta?
 
 select  alunos_total_por_escola.nome_escola, alunos_total_por_escola.nome_cidade_da_escola
 from (
@@ -29,7 +28,7 @@ where alunos_total_por_escola.total_pessoas = alunos_cidade_por_escola.total_pes
 
 -- Q2: Listar o nome e matrícula dos alunos sem nenhum contato cadastrado.
 
-select pessoa.codPessoa, pessoa.nome, aluno.matricula
+select pessoa.nome, aluno.matricula
 from pessoa
 join aluno on pessoa.codPessoa = aluno.codPessoa 
 where aluno.codPessoa not in (
@@ -52,7 +51,6 @@ where alunos_por_turma.quant_alunos > 5;
 
 -- Q4: Listar o código, nome e titulação dos professores que ministram
 --     aulas para pelo menos três turmas diferentes.
--- TODO: Usar HAVING?
 
 select turma_por_prof.codProf, pessoa.nome, professor.titulacao 
 from (
@@ -68,7 +66,7 @@ where turma_por_prof.quant_turmas >= 3;
 -- Q5: Listar por disciplina o número de professores que podem ministrá-la
 --     e quantos efetivamente ministram a mesma para uma turma.
 
-select disciplina.nome, count(distinct ministrar.codProf), count(distinct ministrar_turma.codProf)
+select disciplina.nome, count(distinct ministrar.codProf) as total_profs, count(distinct ministrar_turma.codProf) as profs_em_atividade
 from disciplina
 join ministrar on disciplina.codDisciplina = ministrar.codDisciplina 
 left join ministrar_turma on (ministrar.codDisciplina, ministrar.codProf) = (ministrar_turma.codDisciplina, ministrar_turma.codProf)
@@ -87,7 +85,7 @@ where escola.codCidade != pessoa.codCidade;
 -- Q7: Listar por escola o número de turmas e o número de professores que
 --     ministram alguma disciplina para turmas da escola em questão.
 
-select escola.nome, count(distinct turma.codTurma), count(distinct ministrar_turma.codProf)
+select escola.nome, count(distinct turma.codTurma) as quant_turmas, count(distinct ministrar_turma.codProf) as quant_profs
 from escola 
 join turma on escola.codEscola = turma.codEscola 
 join ministrar_turma on turma.codTurma = ministrar_turma.codTurma 
@@ -98,7 +96,7 @@ group by escola.nome;
 -- Q8: Listar por escola a razão entre o número de alunos da escola e o
 --     número de professores que ministram alguma disciplina na escola em questão.
 
-select escola.nome, count(distinct aluno.codPessoa)/count(distinct ministrar_turma.codProf) as alunos_por_prof
+select escola.nome, count(distinct aluno.codPessoa)/count(distinct ministrar_turma.codProf) as razao_alunos_por_prof
 from escola
 join turma on escola.codEscola = turma.codEscola 
 join aluno on turma.codTurma = aluno.codTurma 
@@ -117,7 +115,6 @@ order by aluno.matricula, contato.nome;
 
 
 -- Q10: Listar todos os professores que ministram disciplinas para apenas uma turma
--- TODO: Usar HAVING?
 
 select pessoa.nome as nome_prof
 from pessoa
