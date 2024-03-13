@@ -1,4 +1,4 @@
-# trabalho_bd1
+# TrabalhoBancoDeDados1
 Trabalho de Banco de Dados 1 - Período 2023.1
 
 ## Descrição
